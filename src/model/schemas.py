@@ -6,7 +6,14 @@ class User(BaseModel):
     password: str
     mobile: int
 
-class Employee(BaseModel):
+
+# this class is used for both User and Employer login purposes
+
+class Login(BaseModel):
+    email:str
+    password:str
+
+class Employer(BaseModel):
     emp_id: int
     job_id: int
     name: str
@@ -26,3 +33,7 @@ class JobApplication(BaseModel):
     user_id: int
     resume: str
     skills: str
+
+class Token(BaseModel):
+    access_token: str
+    token_type: str

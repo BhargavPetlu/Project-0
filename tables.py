@@ -1,10 +1,10 @@
 import sqlite3
 
-con = sqlite3.connect("C:/Users/bharg/OneDrive/Desktop/Project-0/rev_hire.db")
+con = sqlite3.connect("C:/Users/bharg/OneDrive/Desktop/Project-0/revhire.db")
 
 cursor = con.cursor()
 
-# User Table
+# User's Table
 
 cursor.execute(
    """CREATE TABLE USER(
@@ -15,7 +15,7 @@ cursor.execute(
        Mobile INTEGER UNIQUE
    )""")
 
-# Employee Table
+# Employer Table
 
 cursor.execute(
     """
@@ -54,53 +54,3 @@ cursor.execute(
 con.commit()
 
 con.close()
-
-
-# def Database():
-#     conn = sqlite3.connect("rev_hire.db")
-#     cursor = conn.cursor()
-
-#     cursor.execute("""
-#     CREATE TABLE IF NOT EXISTS USER (
-#         user_id INTEGER PRIMARY KEY,
-#         name TEXT,
-#         email TEXT UNIQUE,
-#         password TEXT,
-#         mobile INTEGER UNIQUE
-#     )
-#     """)
-
-#     cursor.execute("""
-#     CREATE TABLE IF NOT EXISTS EMPLOYEER (
-#         emp_id INTEGER PRIMARY KEY,
-#         job_id INTEGER REFERENCES JOBAPPLICATION(job_id),
-#         name TEXT,
-#         email TEXT UNIQUE,
-#         phone INTEGER UNIQUE,
-#         password TEXT
-#     )
-#     """)
-
-#     cursor.execute("""
-#     CREATE TABLE IF NOT EXISTS JOBPOSTING (
-#         job_id INTEGER PRIMARY KEY,
-#         role TEXT NOT NULL,
-#         company TEXT NOT NULL,
-#         email TEXT NOT NULL UNIQUE,
-#         emp_id INTEGER NOT NULL REFERENCES EMPLOYEER(emp_id)
-#     )
-#     """)
-
-#     cursor.execute("""
-#     CREATE TABLE IF NOT EXISTS JOBAPPLICATION (
-#         job_id INTEGER PRIMARY KEY,
-#         user_id INTEGER REFERENCES USER(user_id),
-#         resume TEXT NOT NULL UNIQUE,
-#         skills TEXT NOT NULL
-#     )
-#     """)
-
-#     conn.commit()
-#     conn.close()
-
-# Database()
