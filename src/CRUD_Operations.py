@@ -101,21 +101,22 @@ def create_employer(employer: Employer):
     except:
         return HTTPException(status_code=500, detail="failed to create employer")
 
-def get_employer(emp_id: int):
+def employer_details(emp_id:int):
     try:
         conn = sqlite3.connect("../revhire.db")
         cursor = conn.cursor()
 
-        cursor.execute("""SELECT * FROM EMPLOYEER WHERE emp_id = ?""", (emp_id,))
+        cursor.execute("""SELECT * FROM EMPLOYEER WHERE emp_id = ?""", (emp_id, ))
         employer = cursor.fetchone()
 
+        conn.commit()
         conn.close()
 
         return employer
     except:
         return "Employer not found"
 
-def update_employer(emp_id: int, employer: Employer):
+def employer_update(emp_id: int, employer: Employer):
     try:
         conn = sqlite3.connect("../revhire.db")
         cursor = conn.cursor()
@@ -129,7 +130,7 @@ def update_employer(emp_id: int, employer: Employer):
     except:
         return "Error when updating employer."
 
-def delete_employer(emp_id: int):
+def employer_delete(emp_id: int):
     try:
         conn = sqlite3.connect("../revhire.db")
         cursor = conn.cursor()
@@ -161,7 +162,7 @@ def create_job_posting(job_posting: JobPosting):
     except:
         return HTTPException(status_code=500, detail="failed to Create a Job Post")
 
-def get_job_posting(job_id: int):
+def job_posting_details(job_id: int):
     try:
         conn = sqlite3.connect("../revhire.db")
         cursor = conn.cursor()

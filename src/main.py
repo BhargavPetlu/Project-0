@@ -59,19 +59,19 @@ def employer_login(user:Login):
 
 @app.get("/employers/get")
 def get_employeer(emp_id: int):
-    res = CRUD_Operations.get_employeer(emp_id)
+    res = CRUD_Operations.employer_details(emp_id)
     
     return res
 
-@app.put("/employees/update")
-def update_employeer(emp_id: int, employeer: Employer):
-    res = CRUD_Operations.update_employeer(emp_id, employeer)
+@app.put("/employers/update")
+def update_employer(emp_id: int, employer: Employer):
+    res = CRUD_Operations.employer_update(emp_id, employer)
     
     return res
 
 @app.delete("/employees/delete")
-def delete_employeer(emp_id: int):
-    res = CRUD_Operations.delete_employeer(emp_id)
+def delete_employer(emp_id: int):
+    res = CRUD_Operations.employer_delete(emp_id)
 
     return res
 
@@ -81,13 +81,13 @@ def delete_employeer(emp_id: int):
 
 @app.post("/job_postings/create")
 def create_job_posting(job_posting: JobPosting):
-    res = CRUD_Operations.update_job_posting(job_posting)
+    res = CRUD_Operations.create_job_posting(job_posting)
     
     return res
 
 @app.get("/job_postings/get")
 def get_job_posting(job_id: int):
-    res = CRUD_Operations.update_job_posting(job_id)
+    res = CRUD_Operations.job_posting_details(job_id)
     
     return res
 

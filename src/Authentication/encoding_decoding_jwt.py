@@ -5,7 +5,7 @@ secret_jwt = "e9bf3fdd66a1dfc37de3d6aebb16fddb9f55b8b8f9780ff1c9b3acc9eb42904e7c
 
 
 def create_token(token:str):
-    return {"access token" : token}
+    return token
 
 def encode_jwt(email:str, password:str):
     D = {"email": email, "password": password, "exp": time.time() + (5*60)} # 5 min expiration time
