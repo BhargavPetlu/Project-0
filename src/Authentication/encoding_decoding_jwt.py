@@ -8,9 +8,9 @@ def create_token(token:str):
     return token
 
 def encode_jwt(email:str, password:str):
-    D = {"email": email, "password": password, "exp": time.time() + (5*60)} # 5 min expiration time
+    payload = {"email": email, "password": password, "exp": time.time() + (5*60)} # 5 min expiration time
     
-    token =  jwt.encode(D, secret_jwt, algorithm = "HS256")
+    token =  jwt.encode(payload, secret_jwt, algorithm = "HS256")
     return create_token(token)
 
 def decode_jwt(token:str):
