@@ -1,20 +1,25 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: zero
+  name: projectzero
   namespace: default
+  labels:
+    app: zero
+    type: backend
 spec:
+  template:
+    metadata:
+      name: projectzero
+      labels:
+        app: zero
+        type: backend
+    spec:
+      containers:
+      - name: projectzero
+      image: bhargavpetlu1434/newprojectzero
+      ports:
+      - containerPort: 8000
   replicas: 2
   selector:
     matchLabels:
-      app: myapp
-  template:
-    metadata:
-      labels:
-        app: myapp
-    spec:
-      containers:
-      - name: myapp
-      image: bhargavpetlu1434/newproject
-      ports:
-      - containerPort: 8000
+      app: zero
