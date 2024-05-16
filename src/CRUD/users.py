@@ -1,14 +1,14 @@
 import sqlite3
 from fastapi import  FastAPI, HTTPException
-from model.schemas import Login, User
+from src.model.schemas import Login, User
 
 app = FastAPI()
 
 def login_user(email:str, password:str):
-    conn = sqlite3.connect("../revhire.db")
+    conn = sqlite3.connect("revhire.db")
     cursor = conn.cursor()
     
-    cursor.execute("SELECT email, password FROM User WHERE email=?", (email,))
+    cursor.execute("SELECT email, password FROM USER WHERE email=?", (email,))
     user = cursor.fetchone()
     
     conn.close()
@@ -20,7 +20,7 @@ def login_user(email:str, password:str):
 
 def create_user(user: User):
     try:
-        conn = sqlite3.connect("../revhire.db")
+        conn = sqlite3.connect("revhire.db")
         cursor = conn.cursor()
 
         cursor.execute("""INSERT INTO USER (user_id, name, email, password, mobile) VALUES (?, ?, ?, ?, ?)""", (user.user_id, user.name, user.email, user.password, user.mobile))
@@ -37,7 +37,7 @@ def create_user(user: User):
 
 def get_user(user_id: int):
     try:
-        conn = sqlite3.connect("../revhire.db")
+        conn = sqlite3.connect("revhire.db")
         cursor = conn.cursor()
 
         cursor.execute("""SELECT * FROM USER WHERE user_id = ?""", (user_id,))
@@ -51,7 +51,7 @@ def get_user(user_id: int):
 
 def update_user(user_id: int, user: User):
     try:
-        conn = sqlite3.connect("../revhire.db")
+        conn = sqlite3.connect("revhire.db")
         cursor = conn.cursor()
 
         cursor.execute("UPDATE USER SET name = ?, email = ?, password = ?, mobile = ? WHERE user_id = ?", 
@@ -66,7 +66,7 @@ def update_user(user_id: int, user: User):
 
 def delete_user(user_id: int):
     try:
-        conn = sqlite3.connect("../revhire.db")
+        conn = sqlite3.connect("revhire.db")
         cursor = conn.cursor()
 
         cursor.execute("DELETE FROM USER WHERE user_id = ?", (user_id,))

@@ -1,7 +1,7 @@
 import sqlite3
 from fastapi import  FastAPI, HTTPException
-from model.schemas import *
-from Authentication import *
+from src.model.schemas import *
+from src.Authentication import *
 
 
 """This is for CRUD Operations for Employee Table"""
@@ -9,7 +9,7 @@ from Authentication import *
 
 def create_employer(employer: Employer):
     try:
-        conn = sqlite3.connect("../revhire.db")
+        conn = sqlite3.connect("revhire.db")
         cursor = conn.cursor()
 
         cursor.execute("INSERT INTO EMPLOYEER (emp_id, job_id, name, email, phone, password) VALUES (?, ?, ?, ?, ?, ?)", (employer.emp_id, employer.job_id, employer.name, employer.email, employer.phone, employer.password))
@@ -22,7 +22,7 @@ def create_employer(employer: Employer):
         return HTTPException(status_code=500, detail="failed to create employer")
 
 def verify_employer(email:str, password:str):
-    conn = sqlite3.connect("../revhire.db")
+    conn = sqlite3.connect("revhire.db")
     cursor = conn.cursor()
     
     cursor.execute("SELECT email, password FROM EMPLOYEER WHERE email=?", (email,))
@@ -34,7 +34,7 @@ def verify_employer(email:str, password:str):
 
 def employer_details(emp_id:int):
     try:
-        conn = sqlite3.connect("../revhire.db")
+        conn = sqlite3.connect("revhire.db")
         cursor = conn.cursor()
 
         cursor.execute("""SELECT * FROM EMPLOYEER WHERE emp_id = ?""", (emp_id, ))
@@ -49,7 +49,7 @@ def employer_details(emp_id:int):
 
 def employer_update(emp_id: int, employer: Employer):
     try:
-        conn = sqlite3.connect("../revhire.db")
+        conn = sqlite3.connect("revhire.db")
         cursor = conn.cursor()
 
         cursor.execute("UPDATE EMPLOYEER SET job_id = ?, name = ?, email = ?, phone = ?, password = ? WHERE emp_id = ?", (employer.job_id, employer.name, employer.email, employer.phone, employer.password, emp_id))
@@ -63,7 +63,7 @@ def employer_update(emp_id: int, employer: Employer):
 
 def employer_delete(emp_id: int):
     try:
-        conn = sqlite3.connect("../revhire.db")
+        conn = sqlite3.connect("revhire.db")
         cursor = conn.cursor()
 
         cursor.execute("DELETE FROM EMPLOYEER WHERE emp_id = ?", (emp_id,))

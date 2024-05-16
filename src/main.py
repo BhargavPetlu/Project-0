@@ -1,7 +1,7 @@
 from fastapi import FastAPI
-from model.schemas import *
-from CRUD import employer, jobapplication, jobposting, users
-from Authentication import encoding_decoding_jwt
+from src.model.schemas import User, Employer, JobApplication, JobPosting, Login
+from src.CRUD import employer, jobapplication, jobposting, users
+from src.Authentication import encoding_decoding_jwt
 
 
 app = FastAPI()

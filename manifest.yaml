@@ -7,19 +7,19 @@ metadata:
     app: zero
     type: backend
 spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: zero
+      type: backend
   template:
     metadata:
-      name: projectzero
       labels:
         app: zero
         type: backend
     spec:
       containers:
       - name: projectzero
-      image: bhargavpetlu1434/newprojectzero
-      ports:
-      - containerPort: 8000
-  replicas: 2
-  selector:
-    matchLabels:
-      app: zero
+        image: bhargavpetlu1434/projectzerorepo
+        ports:
+        - containerPort: 8000

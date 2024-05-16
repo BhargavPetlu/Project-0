@@ -1,11 +1,11 @@
 import sqlite3
 from fastapi import HTTPException
-from model.schemas import *
+from src.model.schemas import *
 
 
 def create_job_posting(job_posting: JobPosting):
     try:
-        conn = sqlite3.connect("../revhire.db")
+        conn = sqlite3.connect("revhire.db")
         cursor = conn.cursor()
 
         cursor.execute("INSERT INTO JOBPOSTING (job_id, role, company, email, emp_id) VALUES (?, ?, ?, ?, ?)", (job_posting.job_id, job_posting.role, job_posting.company, job_posting.email, job_posting.emp_id))
@@ -19,7 +19,7 @@ def create_job_posting(job_posting: JobPosting):
 
 def job_posting_details(job_id: int):
     try:
-        conn = sqlite3.connect("../revhire.db")
+        conn = sqlite3.connect("revhire.db")
         cursor = conn.cursor()
 
         cursor.execute("SELECT * FROM JOBPOSTING WHERE job_id = ?", (job_id,))
@@ -33,7 +33,7 @@ def job_posting_details(job_id: int):
 
 def update_job_posting(job_id: int, job_posting: JobPosting):
     try:
-        conn = sqlite3.connect("../revhire.db")
+        conn = sqlite3.connect("revhire.db")
         cursor = conn.cursor()
 
         cursor.execute("UPDATE JOBPOSTING SET role = ?, company = ?, email = ?, emp_id = ? WHERE job_id = ?", (job_posting.role, job_posting.company, job_posting.email, job_posting.emp_id, job_id))
@@ -47,7 +47,7 @@ def update_job_posting(job_id: int, job_posting: JobPosting):
 
 def delete_job_posting(job_id: int):
     try:
-        conn = sqlite3.connect("../revhire.db")
+        conn = sqlite3.connect("revhire.db")
         cursor = conn.cursor()
 
         cursor.execute("DELETE FROM JOBPOSTING WHERE job_id = ?", (job_id,))
