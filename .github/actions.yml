@@ -1,1 +1,2 @@
-name bhargav
+name: bhargav
+on: [push]
