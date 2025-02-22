@@ -1,1 +1,36 @@
-Hello world
+What is a Version Control System (VCS)?
+A Version Control System (VCS) is a tool that helps track changes to files, code, and documents over time. It allows multiple users to collaborate, maintain a history of changes, and revert to previous versions if needed. VCS ensures efficient collaboration, avoids conflicts, and improves software development workflows.
+
+Types of Version Control Systems
+1. Local Version Control System
+Stores different versions of files on a local machine.
+Uses simple file copies or databases to track changes.
+Example: RCS (Revision Control System).
+Limitations:
+
+No collaboration support.
+High risk of data loss if the local machine crashes.
+2. Centralized Version Control System (CVCS)
+A single central server contains all versioned files.
+Developers pull files from the server and commit changes back.
+Examples: SVN (Subversion), CVS (Concurrent Versions System), Perforce.
+Advantages:
+
+Easy administration.
+Centralized backup and security.
+Disadvantages:
+
+Single point of failure.
+Performance issues with large teams.
+3. Distributed Version Control System (DVCS)
+Every user has a complete copy of the repository.
+Changes can be made offline and later synchronized.
+Examples: Git, Mercurial, Bazaar.
+Advantages:
+
+No single point of failure.
+Faster operations and better collaboration.
+Branching and merging are easier.
+Disadvantages:
+
+Requires more storage on local machines.
